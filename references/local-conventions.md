@@ -1,13 +1,13 @@
-# 现有个人课程约定（可选）
+# Optional Personal Course Conventions
 
-仅当用户指定本机 PolyU 课程资料，或现有目录能验证这些约定时使用。其他用户和学期不得套用下面的路径或课程 ID。
+Use only when the user selects the original author's local PolyU materials or existing directories confirm these conventions. Do not apply these paths or course IDs to other users or terms.
 
-## 路径与分类
+## Paths and categories
 
-课程根目录为 `/Users/lml/Desktop/y3_s1/<小写课程代码>/`。当前目录或用户指定课程优先，不默认批量修改所有课程。已知 Canvas 域名为 `https://canvas.polyu.edu.hk`；从课程列表核对学期后进入。BSE3125 当前学期课程 ID 为 5075；不能把这个 ID 用于其他课程或后续学期。
+The historical course root is `/Users/lml/Desktop/y3_s1/<lowercase-course-code>/`. The current directory or user-selected course takes precedence; do not modify all courses by default. The known Canvas domain is `https://canvas.polyu.edu.hk`. Verify the term in the course list. BSE3125 used course ID 5075 in the originally configured term; verify it before use, and never reuse it for another course or later term.
 
-现有常见分类为 `00_info`、`01_lec`、`02_tut`、`03_ass`、`04_project`（部分课用 `04_proj`）、`06_reading`、`98_midterm`、`99_final`（部分课为 `99_finals`）；以目标目录实际名称为准。有录播目录时沿用 `05_recording` 或 `97_recording`，转录放其中的 `Transcripts/`，不把自制复习笔记当作教师转录移动。目录编号冲突时先检查用途，再选未占用名称。
+Existing categories include `00_info`, `01_lec`, `02_tut`, `03_ass`, `04_project` (sometimes `04_proj`), `06_reading`, `98_midterm`, and `99_final` (sometimes `99_finals`). Follow the actual target directory names. Preserve `05_recording` or `97_recording` where present, placing transcripts in `Transcripts/`. Do not move personal revision notes as instructor transcripts. Check directory purposes before resolving numbering conflicts.
 
-## BSE3227 示例
+## BSE3227 example
 
-第 13 周的两份复习讲义放在 `01_lec/Revision/`，命名为 `W13_Revision_L01-L05.pdf` 和 `W13_Revision_HC.pdf`。同一模块里的 `Test.pdf` 根据首页确认是该学期的期中卷，因此与 `Test Solution.pdf` 一起放到 `98_midterm/`，命名为 `Midterm_2026-27_Sem1_Questions.pdf` 和 `Midterm_2026-27_Sem1_Solutions.pdf`。其他课程沿用各自的本地目录结构。
+Two week-13 revision handouts belong in `01_lec/Revision/` as `W13_Revision_L01-L05.pdf` and `W13_Revision_HC.pdf`. Inspection of the first page established that `Test.pdf` was the term's midterm paper, so it and `Test Solution.pdf` belong in `98_midterm/` as `Midterm_2026-27_Sem1_Questions.pdf` and `Midterm_2026-27_Sem1_Solutions.pdf`. Other courses retain their own local structures.

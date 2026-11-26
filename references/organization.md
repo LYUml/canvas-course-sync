@@ -1,42 +1,42 @@
-# 目录与命名规则
+# Organization and Naming
 
-## 编号分类
+## Numbered categories
 
-新课程采用以下默认结构，只创建实际有内容的目录。已有课程沿用其编号和缩写，不为统一外观批量改名。用户明确要求重整时，按内容迁移并更新来源记录与可识别的本地引用。
+Use this structure for new courses, creating only categories that have content. Preserve existing numbering and abbreviations. When the user requests reorganization, move files according to their contents and update source records and identifiable local references.
 
 ```text
 <course>/
-├── 00_info/           # 大纲、课程安排、同步清单及文件索引
-├── 01_lec/            # 讲义；复习资料可放 Revision/
-├── 02_tut/            # 习题、tutorial 及对应解答
-├── 03_ass/            # 作业说明、模板及教师提供的附件
-├── 04_project/        # 项目说明、数据、模板和参考资料
-├── 05_recording/      # 录播来源索引；Transcripts/ 保存字幕与转录
-├── 06_reading/        # 阅读材料与补充参考
-├── 98_midterm/        # 期中试卷及答案
-└── 99_final/          # 期末试卷及答案
+├── 00_info/           # Syllabus, schedule, manifest, and file index
+├── 01_lec/            # Lectures; Revision/ for revision materials
+├── 02_tut/            # Tutorials, exercises, and matching solutions
+├── 03_ass/            # Assignment briefs, templates, and attachments
+├── 04_project/        # Project briefs, datasets, templates, and references
+├── 05_recording/      # Recording sources; Transcripts/ for captions and text
+├── 06_reading/        # Readings and supplementary references
+├── 98_midterm/        # Midterm papers and solutions
+└── 99_final/          # Final exam papers and solutions
 ```
 
-不要因作业尚无附件就建立一批空目录。项目压缩包和代码项目可能依赖内部路径，保留原包及内部结构；需解压时放独立子目录，不逐个重命名内部文件。
+Do not create empty categories for unpublished materials. Preserve original project archives and internal code paths. If extraction is needed, use a separate subdirectory rather than renaming individual internal files.
 
-## 根据内容改名
+## Content-based names
 
-先看页面上下文，再检查文件首页、标题或正文片段，确认材料类型、编号、主题、学期及题卷／答案角色。采用简短、可排序的名称，保留扩展名；原名、来源和新路径写入清单。
+Read the page context, then inspect the file's first page, title, or relevant text to identify its type, number, topic, term, and question/solution role. Use concise, sortable names and preserve extensions. Record the original name, source, and new path in the manifest.
 
-| 类型 | 命名示例 |
+| Material | Example names |
 | --- | --- |
-| 讲义 | `L01_Introduction.pdf` |
-| 按周发布的讲义 | `W03_Heat_Transfer.pdf` |
-| 习题与答案 | `T02_Questions.pdf`、`T02_Solutions.pdf` |
-| 作业 | `A01_Brief.pdf`、`A01_Template.xlsx` |
-| 项目 | `Project_Brief.pdf`、`Project_Dataset.zip` |
-| 期中卷与答案 | `Midterm_2026-27_Sem1_Questions.pdf`、`Midterm_2026-27_Sem1_Solutions.pdf` |
+| Lecture | `L01_Introduction.pdf` |
+| Weekly lecture | `W03_Heat_Transfer.pdf` |
+| Tutorial and solutions | `T02_Questions.pdf`, `T02_Solutions.pdf` |
+| Assignment | `A01_Brief.pdf`, `A01_Template.xlsx` |
+| Project | `Project_Brief.pdf`, `Project_Dataset.zip` |
+| Midterm and solutions | `Midterm_2026-27_Sem1_Questions.pdf`, `Midterm_2026-27_Sem1_Solutions.pdf` |
 
-讲次与周次是不同信息，不互相推断；没有可靠主题就只保留已知编号和原名的有效部分。主题可保留原语言，不强制翻译。移除文件名中的路径分隔符与控制字符；同名异内容用可靠日期、版本号或短来源 ID 区分，不能覆盖。
+Lecture numbers and week numbers are distinct; do not infer one from the other. When a topic is unknown, retain the known number and useful parts of the original title. Source titles may keep their original language; translation is not required. Remove path separators and control characters from filenames. Resolve different content with the same name using an evidenced date, version, or short source ID, without overwriting.
 
-## 整理存量与索引
+## Existing files and indexes
 
-- 常规同步仅整理本次新增或更新的教师资料；用户要求整理已有资料时，再处理范围内存量。识别手工笔记和草稿，保留其内容与用户命名。
-- 移动前记录旧路径、新路径与原因；先验证目标文件和哈希，再处理旧位置。无法确认重复时保留，不按文件名直接删除。
-- 清单保存全部来源和路径映射；在 `00_info/FILE_INDEX.md` 维护便于浏览的文件索引，已有索引则更新原文件。按分类列出标题、相对文件链接、原名与来源；只为实际存在的文件生成链接。
-- 整理后检查移动文件可读取、索引链接有效；可识别的课程内文档引用随之更新。无法可靠更新的外部引用列入报告，不声称引用已全部修复。
+- Routine synchronization organizes newly downloaded or updated instructor materials. Reorganize existing materials when requested. Preserve personal notes, drafts, their content, and user-chosen names.
+- Record old and new paths and the reason before moving. Verify destination contents and hashes before cleaning up old locations. Preserve uncertain duplicates; never delete based only on matching names.
+- Keep complete source/path mappings in the manifest. Maintain a readable `00_info/FILE_INDEX.md`, or update the existing index. Group entries by category with titles, relative file links, original names, and sources. Link only to files that actually exist.
+- Verify moved files and index links. Update identifiable references in local course documents. Report external references that cannot be reliably updated without claiming all references were repaired.

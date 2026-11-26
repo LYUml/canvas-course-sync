@@ -1,46 +1,46 @@
 ---
 name: canvas-course-sync
-description: 从已登录的 Canvas 课程下载新增或更新的资料，按本地课程目录分类、重命名并去重，同时同步 Zoom／Panopto 录播已有的字幕和转录。用户说“同步 Canvas”“更新某门课的资料”或要求下载课件、习题、试卷、项目附件、录播转录并整理到本地时使用。
+description: Incrementally download and organize Canvas course materials, rename files by content, deduplicate versions, and sync existing Zoom or Panopto captions and transcripts. Use when asked to sync a Canvas course, update local course materials, or organize downloaded lectures, tutorials, assignments, exams, project attachments, and recording transcripts.
 ---
 
-# 同步 Canvas 课程资料
+# Canvas Course Sync
 
-让指定课程的本地目录补齐本次范围内可获取的资料。用户说“更新”时，先比对现有资料，再补缺和更新；只有用户明确要求定期执行时才设置定期任务。
+Bring the selected local course directory up to date with accessible materials in the requested scope. For updates, compare existing files before downloading missing or changed content. Schedule recurring runs only when explicitly requested.
 
-## 确认课程和下载范围
+## Identify the course and scope
 
-- 优先使用已连接的 Canvas 工具。若没有适用工具，使用当前已登录的浏览器标签页，通过课程列表确认课程代码、学期及课程主页。
-- 查看指定本地目录的 README、整理记录和已有文件。沿用目录编号、命名格式和旧版归档方式。不同学期有同名课程时，以用户指定学期或本地资料为依据。
-- 优先从 Modules 获取资料清单，再按任务范围检查 Announcements、Assignments 和课程可见的 Files。点开可能带附件的课程页面。模块标题可能指向附件、课程页面、在线测验或提交入口，按实际内容分类。截图、链接或登录页面均不能当作已下载的原文件。
+- Prefer a suitable connected Canvas tool. Otherwise use an authenticated browser session and confirm the course code, term, and course homepage from the course list.
+- Inspect the target directory, existing README, indexes, and files. Preserve established numbering, naming, and version archives. Resolve courses with the same name using the requested term and local evidence.
+- Start with Modules, then inspect Announcements, Assignments, and visible Files as relevant. Open pages that may contain attachments. A module item may be a file, page, quiz, or submission link; classify its actual content. Screenshots, links, and login pages are not downloaded originals.
 
-## AI 整理与编号目录
+## AI organization and numbered directories
 
-同步包括主动分类和重命名，不只是保存原文件名。读取 [目录与命名规则](references/organization.md)，根据课程页面、文件首页及内容识别用途，为新课程建立 `00_info`、`01_lec`、`02_tut`、`03_ass`、`04_project` 等编号目录，按实际需要创建。已有目录优先沿用；用户要求整理存量时，先盘点文件及引用，再执行可追溯的移动和改名。信息不足时保留原名或标记待确认，不编造讲次和主题。
+Organization and content-based renaming are part of synchronization. Read [Organization and naming](references/organization.md). Identify each item's purpose from the course page and file contents. For a new course, create numbered categories such as `00_info`, `01_lec`, `02_tut`, `03_ass`, and `04_project` as needed. Preserve existing conventions. When asked to reorganize existing files, inventory files and references before making traceable moves. Keep uncertain names or flag them for review rather than inventing lecture numbers or topics.
 
-## 下载、比对和归档
+## Download, compare, and archive
 
-1. 用模块、文件标题、原名和已有整理记录匹配本地文件。有更新迹象或无法确认同一版本时，下载到临时位置，再用 SHA-256 比对。相同内容只保留一份。本地文件名不同也可能是同一份资料。
-2. 通过 Canvas 的文件详情页使用原生下载链接，每次记录实际保存路径。浏览器支持等待下载事件时，先开始等待再点下载；如果事件未返回，检查下载目录和当前页面，区分下载完成、预览、登录失效和浏览器拦截。遇到拦截时可检查 Canvas 是否另有官方附件入口，仍无法下载则记录具体条目和原因。
-3. 按内容选择目录和名称，保留正确扩展名。讲义按讲次，习题及解答按同一习题编号，考试按学年、学期及题卷或答案，项目资料按用途。根据文件首页或页面说明确认含义，避免仅凭通用名字或模块位置归类。
-4. 移动前检查目标同名文件。来源明确且确为新版时，按已有归档惯例保留旧版，再放入新版。无法确认版本关系时使用可区分的文件名保留两份。保留本地手工笔记、自制练习、项目草稿及用户整理过的版本。
-5. 验证所有新文件在目标路径、非空且可读取。PDF 可用 `pdfinfo` 核对页数和格式，必要时读取首页。若目录已有整理记录，补上原名与新路径。向用户汇报新增或更新的文件及路径，另列未取得的资料和原因。
+1. Match local files using source IDs, module context, titles, original names, and existing records. If a version is uncertain or appears changed, download to a temporary location and compare SHA-256. Identical content needs only one local copy, even when names differ.
+2. Use the native download link on the Canvas file page and record the actual saved path. When download events are supported, start waiting before clicking. If no event arrives, inspect the download directory and page to distinguish a completed download from a preview, expired login, or blocked download. Check alternative official attachment links when available; record unresolved failures precisely.
+3. Choose a category and descriptive name while preserving the extension. Use lecture numbers for lectures, matching tutorial numbers for questions and solutions, term and role for exams, and purpose for project materials. Inspect the first page or source description instead of relying on a generic filename or module position.
+4. Check for destination collisions before moving. Archive the old version according to existing conventions when the source clearly establishes an update. Otherwise preserve both with distinguishable names. Preserve personal notes, self-authored exercises, project drafts, and user-edited copies.
+5. Verify that every new file exists at the destination, is nonempty, and can be read. For PDFs, use `pdfinfo` when available and inspect the first page when needed. Update original-name and destination mappings and the file index. Report saved paths and unresolved items.
 
-## 录播字幕和语音转文字同步
+## Recording transcripts
 
-除非用户限定仅下载附件，正常课程同步也检查 Zoom 和 Panopto。读取 [录播转录流程](references/transcripts.md)，从课程录播列表和模块内嵌播放器补齐转录。每次调用时增量执行；不把 skill 本身描述为后台定时服务。仅在用户明确指定周期后使用 Automations 设置定期执行。
+Unless the user limits the task to attachments, also check Zoom and Panopto. Read [Recording transcripts](references/transcripts.md) and inspect both recording lists and embedded module players. Run incrementally on each invocation; this skill is not a background service. Use available automation tools only when a recurring schedule is explicitly requested.
 
-## 同步记录和完成条件
+## Records and completion
 
-读取 [同步清单约定](references/manifest.md)，优先兼容现有清单，缺少时再创建。每项操作完成后记录结果；中断后依据清单和实际文件恢复。只有检查完约定入口、分页及下载范围后，才报告范围内同步完成。报告应区分新增、内容更新、未变化、未获取和未检查；权限不足或部分转录不算完成。
+Read [Manifest conventions](references/manifest.md). Reuse an existing manifest format or create one when absent. Record each completed operation and resume interrupted work using both the manifest and actual files. Claim completion only after checking the agreed entry points, pagination, and download scope. Distinguish new, updated, unchanged, unavailable, and unchecked items. Permission failures and partial transcripts are not completed items.
 
-## 环境和权限边界
+## Environment and access boundaries
 
-- 开始前确认目标课程、学期和本地根目录；优先使用用户指定位置、当前课程目录或已有来源记录。仍存在会导致写错目录的歧义时询问用户，先做独立的只读检查。
-- 使用当前环境实际提供的连接器、浏览器和文件工具；没有可用登录会话时请用户登录，不索取密码或复制会话令牌。API 仅在工具提供或用户明确授权的访问方式下使用；遵守浏览器工具自身限制。
-- 本任务只读取课程内容并写入指定本地目录，不提交作业、修改课程、发布内容或删除远端文件。远端文件消失时保留本地副本并记录，避免把未列出误判为删除。
-- 登录失效、权限拒绝或持续失败时保留进度；同一故障不反复点击或重试。临时故障可有限重试并记录，等待用户处理必要的登录或授权。
-- 不把账号、Cookie、访问令牌、带签名的临时下载 URL、学生个人信息写进公开记录；清单使用稳定课程页面和平台 ID。不能安全移除凭据时省略该 URL 并说明。
+- Confirm the course, term, and local root using user instructions, the current course directory, or existing source records. Ask when ambiguity could cause writes to the wrong location; continue independent read-only checks where useful.
+- Use tools actually available in the environment. If no authenticated session exists, ask the user to sign in; do not request passwords or copy session tokens. Use APIs only through provided tools or an explicitly authorized access method. Follow the browser tool's own restrictions.
+- Read course content and write only within the selected local scope. Do not submit assignments, modify courses, publish content, or delete remote files. Preserve local copies when remote materials disappear; absence from a listing is not proof of deletion.
+- Preserve progress on expired login, denied access, or persistent failures. Retry transient failures only a bounded number of times; do not repeatedly click through the same failure. Wait for the user when login or additional authorization is necessary.
+- Do not put credentials, cookies, access tokens, signed temporary download URLs, or student personal information in public records. Store stable course pages and platform IDs. Omit a URL if credentials cannot safely be removed and explain the omission.
 
-## 可选本地约定
+## Optional local conventions
 
-针对原作者现有 PolyU 目录时，读取 [个人课程约定](references/local-conventions.md)。它是可验证的历史配置，不是默认安装路径或持续有效的课程映射。
+For the original author's existing PolyU directories, read [Local conventions](references/local-conventions.md). These are historical settings to verify, not default installation paths or permanent course mappings.
