@@ -1,23 +1,19 @@
-# Zoom and Panopto Transcript Sync
+# Recording Transcripts
 
-## Discovery and authentication
+## Discover
 
-1. Inspect Recording/Recordings pages in Modules and the Zoom or Panopto Video course navigation. Confirm course, term, and dates. Traverse all recording-list pages and embedded module recordings missing from those lists. Deduplicate by platform recording ID or canonical playback URL. Keep separate times for tutorials recorded on the same date.
-2. Use connected tools or an authenticated browser. If an embedded Panopto player is blank, follow an actual player link or existing source record to its playback page. When prompted, select the Canvas identity provider and use the current Canvas login. Do not guess recording IDs, extract browser credentials, or bypass permissions.
-3. In Zoom, inspect Cloud Recordings, date filters, pagination, and multiple files per session. Upcoming Meetings is not a recording list. Use only passcodes supplied by the user or published in the course.
+- Check module players and all pages of Zoom Cloud Recordings or Panopto lists, including date filters and multiple files per session. Upcoming Meetings is not a recording list. Deduplicate by recording ID or canonical playback URL.
+- Use authenticated sessions and actual playback links. For blank Panopto embeds, open the linked player and use the Canvas identity provider when offered. Use only user-supplied or course-published passcodes.
 
-## Retrieval and storage
+## Save
 
-- Prefer native transcript/caption downloads in VTT, SRT, or TXT. Download captions and transcripts by default, not full videos. If a complete transcript is visible without a download button, export the rendered transcript panel. Preserve language, timestamps, and existing speaker labels without translation or silent terminology corrections.
-- In Panopto, select Captions and read its associated panel, excluding OCR outlines, chats, discussions, and search results. In Zoom, open Audio Transcript and confirm all entries have loaded. For virtualized lists, load successive sections and deduplicate by timestamp. Label incomplete captures as `partial`.
-- Use download or export methods supported by the current browser tools. If only panel text is available, a supported alternative is to paste the captured text into a UTF-8 file using a text editor and then organize it with filesystem tools. Preserve underscores in save paths using supported value-setting or paste actions. Verify saved contents on disk, not just closure of the save dialog. Follow tool restrictions; do not create page-script downloads or call hidden endpoints.
-- Store transcripts in the course recording directory's `Transcripts/`. Adopt a numbered recording directory only when confirmed by local evidence. Follow `{Lxx|Txx|Pxx}_YYYY-MM-DD_HHMMSS_Topic.txt` where course evidence supports the number and topic. Otherwise use `Recording_YYYY-MM-DD_HHMMSS_<short-ID>.txt`; do not invent lecture numbers.
-- Record course, original title, stable playback page, recording date/timezone, export date, platform, and automatic/human caption origin in the text header. Mark automatic captions as uncorrected. If the platform timezone is unknown, preserve the displayed time and label the timezone unknown rather than inferring it from the machine.
-- Keep downloaded original captions and produce a separate readable TXT. Panopto panels may place timestamps after the corresponding text; associate each timestamp with the preceding full segment rather than the following text. Do not replace transcripts with summaries.
+- Prefer native VTT/SRT/TXT downloads. Otherwise export the complete rendered Captions or Audio Transcript panel through supported tools. Exclude OCR, chat, and search results. Load virtualized sections and deduplicate timestamps; mark incomplete captures `partial`.
+- Keep original captions plus readable UTF-8 TXT in the recording directory's `Transcripts/`. Preserve language, timestamps, and speaker labels; do not summarize or silently correct text. In Panopto, timestamps following text belong to the preceding segment.
+- Use evidenced names such as `L01_YYYY-MM-DD_HHMMSS_Topic.txt`; otherwise use `Recording_YYYY-MM-DD_HHMMSS_<short-ID>.txt`. Never invent lecture numbers or infer unknown source timezones from the machine.
+- Include course, original title, stable playback URL, recording time/timezone, export date, platform, and caption origin in the header. Mark automatic captions as uncorrected.
 
-## Incremental checks and validation
+## Validate
 
-- Inspect the manifest, source links, and local files first. Skip complete unchanged recordings. Recheck recordings previously marked in progress, processing, or without captions. Compare updated captions by SHA-256, retain old versions, and preserve user notes.
-- Verify nonempty, decodable files, segment counts, first/last timestamps, and chronological order. Captions may end before trailing silence; do not fabricate text to match video duration. Record visible duration and last caption time, investigating substantial gaps for incomplete loading.
-- Use `downloaded`, `updated`, `unchanged`, `partial`, `processing`, `no_transcript`, `authentication_required`, `permission_denied`, or `failed` as appropriate. Distinguish unpublished captions, ongoing recording, expired login, and permission issues. Do not claim speech recognition when no transcript exists. If local transcription is requested, first confirm available models/tools, costs, and permission to obtain audio; label the generated source separately.
-- Update `Transcripts/INDEX.txt` and the manifest with additions, changes, skips, and unresolved reasons. If only part of a platform was checked, report exact coverage instead of claiming the entire course is complete.
+Verify actual saved contents, decoding, segment count, and ordered first/last timestamps. Compare the last caption with visible duration and investigate substantial gaps; trailing silence needs no fabricated captions. Hash updates and preserve previous versions.
+
+Update `Transcripts/INDEX.txt` and the manifest with exact coverage and unresolved reasons. Recheck processing recordings and missing captions later. Do not claim speech recognition when captions are absent; local transcription requires confirmed tools, costs, audio access, and separate source labeling.
