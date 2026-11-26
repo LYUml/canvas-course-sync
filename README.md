@@ -50,25 +50,28 @@ To organize existing materials:
 
 ```text
 Use $canvas-course-sync to organize existing instructor materials in
-~/Courses/2026-27-Sem1/example101 into 01, 02, 03, 04 categories.
+~/Courses/2026-27-Sem1/example101 into numbered categories that fit this course and follow a logical learning order.
 Rename files based on their contents and update the index.
 Preserve my notes and project drafts, and report all moves and renames.
 ```
 
-You can limit the scope to attachments, a particular week, or recording transcripts. The AI follows existing conventions; new courses use the categories below as needed:
+You can limit the scope to attachments, a particular week, or recording transcripts. The AI first identifies the course's actual activities, then chooses a useful folder order. Numeric prefixes are for navigation, not fixed category IDs: `03` might be adaptive learning in one course and assignments in another.
+
+For example, a course with adaptive learning, a project, and labs could use:
 
 ```text
 example101/
-├── 00_info/           # Syllabus, FILE_INDEX.md, sync-manifest.json
-├── 01_lec/            # L01_Introduction.pdf
-├── 02_tut/            # T01_Questions.pdf, T01_Solutions.pdf
-├── 03_ass/            # A01_Brief.pdf, A01_Template.xlsx
-├── 04_project/        # Project briefs, datasets, and templates
-├── 05_recording/      # Transcripts/: original captions and readable text
-├── 06_reading/        # Readings
-├── 98_midterm/        # Midterm papers and solutions
-└── 99_final/          # Final exam papers and solutions
+├── 00_info/               # Syllabus, FILE_INDEX.md, sync-manifest.json
+├── 01_lec/                # Lectures
+├── 02_tut/                # Tutorials and matching solutions
+├── 03_adaptive_learning/  # Adaptive learning materials
+├── 04_project/            # Project briefs, datasets, and templates
+├── 05_lab/                # Lab instructions and supporting files
+├── 97_recording/          # Transcripts/: original captions and readable text
+└── 99_final/              # Final exam papers and solutions
 ```
+
+This is a reference, not a required layout. A different course might need assignments, readings, or midterms and have no adaptive learning or labs. The AI creates only useful categories, keeps related questions and solutions together, and records the chosen structure in the index. Existing folder names and numbers stay stable during routine updates; new material does not trigger a complete renumbering. Explicit reorganization requests can change the layout while preserving source mappings and updating local references.
 
 Classification uses actual contents, not just filenames. For example, after its first page confirms it is a midterm paper, `Test.pdf` can become `98_midterm/Midterm_2026-27_Sem1_Questions.pdf`. Unknown lecture numbers, topics, and terms are not invented. Internal project archive structures are preserved.
 

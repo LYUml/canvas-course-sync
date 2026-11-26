@@ -15,7 +15,7 @@ Bring the selected local course directory up to date with accessible materials i
 
 ## AI organization and numbered directories
 
-Organization and content-based renaming are part of synchronization. Read [Organization and naming](references/organization.md). Identify each item's purpose from the course page and file contents. For a new course, create numbered categories such as `00_info`, `01_lec`, `02_tut`, `03_ass`, and `04_project` as needed. Preserve existing conventions. When asked to reorganize existing files, inventory files and references before making traceable moves. Keep uncertain names or flag them for review rather than inventing lecture numbers or topics.
+Organization and content-based renaming are part of synchronization. Read [Organization and naming](references/organization.md). Identify each item's purpose from the course page and file contents. For a new course, inventory its actual learning activities and choose numbered categories in a useful navigation order. Course information, lectures, and tutorials commonly come first; adaptive learning, assignments, projects, labs, readings, recordings, and exams depend on the course. Numbers indicate order, not fixed category IDs. Do not copy an example layout mechanically. Preserve existing conventions and avoid renumbering established folders during routine updates. When asked to reorganize existing files, inventory files and references before making traceable moves. Keep uncertain names or flag them for review rather than inventing lecture numbers or topics.
 
 ## Download, compare, and archive
 

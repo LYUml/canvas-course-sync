@@ -2,20 +2,29 @@
 
 ## Numbered categories
 
-Use this structure for new courses, creating only categories that have content. Preserve existing numbering and abbreviations. When the user requests reorganization, move files according to their contents and update source records and identifiable local references.
+Treat numeric prefixes as navigation order, not fixed category IDs. First inventory the course's actual material types and learning activities, then choose a small set of meaningful categories. Preserve existing numbering and abbreviations unless the user requests reorganization.
+
+For a new course, place course information first (usually `00_info`), followed by the core teaching materials and their associated practice. Order other activities such as adaptive learning, assignments, projects, and labs according to the course structure and how students use them. There is no universal rule that assignments must be `03` or recordings must be `05`. Keep supporting resources and exam preparation easy to find; high prefixes such as `97_recording`, `98_midterm`, and `99_final` are useful options, not reserved slots.
+
+For example, a course with adaptive learning and labs might use:
 
 ```text
 <course>/
-├── 00_info/           # Syllabus, schedule, manifest, and file index
-├── 01_lec/            # Lectures; Revision/ for revision materials
-├── 02_tut/            # Tutorials, exercises, and matching solutions
-├── 03_ass/            # Assignment briefs, templates, and attachments
-├── 04_project/        # Project briefs, datasets, templates, and references
-├── 05_recording/      # Recording sources; Transcripts/ for captions and text
-├── 06_reading/        # Readings and supplementary references
-├── 98_midterm/        # Midterm papers and solutions
-└── 99_final/          # Final exam papers and solutions
+├── 00_info/               # Syllabus, schedule, manifest, and file index
+├── 01_lec/                # Lectures
+├── 02_tut/                # Tutorials and matching solutions
+├── 03_adaptive_learning/  # Adaptive learning materials
+├── 04_project/            # Project briefs, datasets, and templates
+├── 05_lab/                # Lab instructions and supporting files
+├── 97_recording/          # Recording sources and Transcripts/
+└── 99_final/              # Final exam materials
 ```
+
+This is an illustration, not a template to copy. Another course might use `03_ass`, `04_lab`, and `05_reading`, omit projects entirely, or group readings under the related lecture topic. Keep a distinct category when it represents a recurring activity or a useful body of material; avoid a separate top-level folder for every small variation. Keep questions and solutions together under the same activity.
+
+Create categories only when needed. On later syncs, add a new category using a suitable unused prefix without renumbering established folders merely to close gaps. If ordering cannot be improved without disrupting existing paths, preserve stability until reorganization is requested. Record category purposes and the resulting order in the course index so subsequent runs follow the same logic.
+
+When reorganization is requested, inventory existing files and references, choose the layout from the actual course content, then make traceable moves and update source records and identifiable local references.
 
 Do not create empty categories for unpublished materials. Preserve original project archives and internal code paths. If extraction is needed, use a separate subdirectory rather than renaming individual internal files.
 
