@@ -1,0 +1,4 @@
+interface:
+  display_name: "Canvas 课程同步"
+  short_description: "增量下载 Canvas 课程资料，整理归档并同步 Zoom 与 Panopto 已有字幕转录"
+  default_prompt: "使用 $canvas-course-sync 检查指定课程的现有资料，下载新增或更新的附件及录播转录，并汇报未完成项。"
